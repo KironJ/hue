@@ -1,0 +1,20 @@
+version: '3'
+services:
+
+  hue:
+    image: kirin/hue
+    ports:
+     - "8888:8888"
+    volumes:
+     - ./desktop:/hue/desktop
+    extra_hosts:
+     - "kafka1.bigdata.hbh.local kafka1:172.16.201.10"
+     - "kafka2.bigdata.hbh.local kafka2:172.16.201.11"
+     - "kafka3.bigdata.hbh.local kafka3:172.16.201.12"
+     - "master1.bigdata.hbh.local master1:172.16.201.13"
+     - "master2.bigdata.hbh.local master2:172.16.201.14"
+     - "slave1.bigdata.hbh.local slave1:172.16.201.15"
+     - "slave2.bigdata.hbh.local slave2:172.16.201.16"
+     - "slave3.bigdata.hbh.local slave3:172.16.201.17"
+     - "client1.bigdata.hbh.local client1:172.16.201.18"
+     - "nifi1.bigdata.hbh.local nifi1:172.16.201.19"
