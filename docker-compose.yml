@@ -2,19 +2,29 @@ version: '3'
 services:
 
   hue:
-    image: kirin/hue
+    hostname: client01.bigdata.hbh.local
+    image: registry.cn-hangzhou.aliyuncs.com/kirin/hue-expolre:0.0.1 
     ports:
      - "8888:8888"
     volumes:
-     - ./desktop:/hue/desktop
+     - ./hue.ini:/hue/desktop/conf/hue.ini
+     - ./hue.ini:/hue/desktop/conf.dist/hue.ini
+     - ./hue.ini:/hue/desktop/conf/pseudo-distributed.ini
+     - ../hadoop-config/hadoop/:/etc/hadoop/conf/
+     - ../hadoop-config/hive/:/etc/hive/conf/
+     - ../hadoop-config/hbase/:/etc/hbase/conf/
     extra_hosts:
-     - "kafka1.bigdata.hbh.local kafka1:172.16.201.10"
-     - "kafka2.bigdata.hbh.local kafka2:172.16.201.11"
-     - "kafka3.bigdata.hbh.local kafka3:172.16.201.12"
      - "master1.bigdata.hbh.local master1:172.16.201.13"
-     - "master2.bigdata.hbh.local master2:172.16.201.14"
-     - "slave1.bigdata.hbh.local slave1:172.16.201.15"
-     - "slave2.bigdata.hbh.local slave2:172.16.201.16"
-     - "slave3.bigdata.hbh.local slave3:172.16.201.17"
      - "client1.bigdata.hbh.local client1:172.16.201.18"
-     - "nifi1.bigdata.hbh.local nifi1:172.16.201.19"
+     - "master01.bigdata.hbh.local:172.16.201.40"
+     - "slave01.bigdata.hbh.local:172.16.201.41"
+     - "kafka01.bigdata.hbh.local:172.16.201.42"
+     - "nifi01.bigdata.hbh.local:172.16.201.43"
+     - "master02.bigdata.hbh.local:172.16.201.44"
+     - "slave02.bigdata.hbh.local:172.16.201.45"
+     - "kafka02.bigdata.hbh.local:172.16.201.46"
+     - "slave03.bigdata.hbh.local:172.16.201.47"
+     - "kafka03.bigdata.hbh.local:172.16.201.48"
+     - "client01.bigdata.hbh.local:172.16.201.49"
+    command: ./build/env/bin/hue runserver 0.0.0.0:8888
+    #command: ./build/env/bin/hue runserver_plus 0.0.0.0:8888

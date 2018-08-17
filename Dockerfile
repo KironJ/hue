@@ -30,3 +30,5 @@ WORKDIR hue
 RUN make apps
 EXPOSE 8888
 # VOLUME /hue/desktop/
+
+
