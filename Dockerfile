@@ -25,7 +25,7 @@ RUN yum clean all && yum update -y && yum -y install gcc-c++ asciidoc cyrus-sasl
     libxslt-devel mysql-devel openldap-devel python-devel sqlite-devel openssl-devel gmp-devel \
     ant cyrus-sasl-plain gcc libffi-devel make mysql git
 
-RUN git clone https://github.com/cloudera/hue.git
+RUN git clone https://github.com/cloudera/hue.git && git checkout release-4.2.0
 WORKDIR hue
 RUN make apps
 EXPOSE 8888
