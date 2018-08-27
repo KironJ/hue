@@ -27,7 +27,8 @@ RUN yum clean all && yum update -y && yum -y install gcc-c++ asciidoc cyrus-sasl
 
 RUN git clone https://github.com/cloudera/hue.git
 WORKDIR hue
-RUN git checkout release-4.2.0 && make apps
+RUN git checkout release-4.2.0  
+RUN make apps
 EXPOSE 8888
 # VOLUME /hue/desktop/
 
