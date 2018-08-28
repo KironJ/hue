@@ -23,12 +23,12 @@ ENV MAVEN_HOME /usr/share/maven
 # *************  安装Hue编译依赖的包 *************
 RUN yum clean all && yum update -y && yum -y install gcc-c++ asciidoc cyrus-sasl-devel cyrus-sasl-gssapi krb5-devel libxml2-devel \
     libxslt-devel mysql-devel openldap-devel python-devel sqlite-devel openssl-devel gmp-devel \
-    ant cyrus-sasl-plain gcc libffi-devel make mysql git 
+    ant cyrus-sasl-plain gcc libffi-devel make mysql git
 
 RUN git clone https://github.com/cloudera/hue.git
 WORKDIR hue
 RUN git checkout release-4.2.0 
-RUN ./build/env/bin/pip install logilab-astng
+RUN /hue/build/env/bin/pip install logilab-astng
 RUN make apps
 EXPOSE 8888
 # VOLUME /hue/desktop/
