@@ -30,5 +30,5 @@ WORKDIR hue
 RUN git checkout release-4.2.0 
 RUN make install 
 RUN /hue/build/env/bin/pip install logilab-astng
-
-
+RUN make apps
+EXPOSE 8888
