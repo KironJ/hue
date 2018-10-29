@@ -2,8 +2,6 @@ FROM centos:centos7
 
 # MAINTAINER Kirin "https://github.com/bekylin/hue"
 
-RUN echo 'nameserver 8.8.8.8' > /etc/resolv.conf && echo 'nameserver 114.114.114.114' >> /etc/resolv.conf && yum install -y wget
-
 # *************  安装Java, Maven 以及其他必要组件 *************
 ENV JAVA_VERSON 1.8.0
 ENV MAVEN_VERSION 3.3.9
